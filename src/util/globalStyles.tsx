@@ -6,6 +6,7 @@ export const CSSReset = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
   }`;
 
 export const activeBorder = css`

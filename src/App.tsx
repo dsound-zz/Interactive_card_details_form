@@ -17,6 +17,7 @@ const AppContainer = styled.div`
 const LeftScreen = styled.div`
   flex: 0 0 480px;
   background-image: url(${backgroundImage});
+  height: 100%;
   padding: 0.5em;
   @media (max-width: 768px) {
     max-width: 100%;
@@ -37,8 +38,8 @@ function App() {
   return (
     <>
       <CSSReset />
-      <CardsController />
       <AppContainer>
+        <CardsController />
         <LeftScreen>left</LeftScreen>
         <RightScreen>right</RightScreen>
       </AppContainer>

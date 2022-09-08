@@ -5,32 +5,36 @@ import backgroundImageMobile from "./assets/images/bg-main-mobile.png";
 import CardsController from "./Components/CardsController";
 
 const AppContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px 1fr 2fr;
+  grid-template-rows: minmax(100px, auto);
   width: 100%;
   height: 100vh;
-  max-height: 100%;
   @media (max-width: 768px) {
+    display: flex;
     flex-direction: column;
   }
 `;
 
 const LeftScreen = styled.div`
-  flex: 0 0 480px;
+  grid-column: 1/2;
   background-image: url(${backgroundImage});
-  height: 100%;
   padding: 0.5em;
   @media (max-width: 768px) {
-    max-width: 100%;
+    flex: 1;
     background-image: url(${backgroundImageMobile});
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
 `;
 
 const RightScreen = styled.div`
-  flex: 0 1 75%;
-  max-width: 100%;
+  grid-column: 2/4;
   padding: 0.5em;
+  border: blue solid 1px;
   @media (max-width: 768px) {
-    max-width: 100%;
+    flex: 2;
+    width: 100%;
   }
 `;
 
@@ -39,9 +43,9 @@ function App() {
     <>
       <CSSReset />
       <AppContainer>
-        <CardsController />
         <LeftScreen>left</LeftScreen>
         <RightScreen>right</RightScreen>
+        <CardsController />
       </AppContainer>
     </>
   );

@@ -7,62 +7,78 @@ type CircleProps = {
 };
 
 const CardContainer = styled.div`
+  grid-column: 2;
+  grid-row: 2;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  position: absolute;
-  top: 25%;
-  left: 10%;
-  right: 0;
-  bottom: 0;
   background-image: url(${cardFrontImage});
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  padding: 15px;
+  padding: 0.5em;
+  position: absolute;
+  top: 250px;
+  left: 180px;
+  z-index: 2;
+  width: 100%;
+  height: 50%;
+  @media (max-width: 768px) {
+    display: grid;
+    width: 100%;
+    height: 50%;
+    top: 200px;
+    left: 5px;
+    background-size: 75% 50%;
+  }
+
 `;
 
 const CircleContainer = styled.div`
+  grid-column: 1;
   grid-row: 1;
-  display: flex;
-  justify-content: space-evenly;
+  display: flex; 
+  flex-direction: row;
+  justify-content: 'space-between';
   align-items: center;
-  max-width: 100px;
+  width: 50%;
+  max-width: 300px;
+  padding: 0.5em;
+  border: 1px solid orange;
+  @media (max-width: 768px) {
+    height: 30%;
+  }
 `;
 
 const Circle = styled.div<CircleProps>`
   background: ${(props) => props.large && `${colors.white}`};
   border-radius: 50%;
+  margin-left: 20px;
   border: ${colors.white} solid 1px;
   width: ${(props) => (props.large ? "40px" : "25px")};
   height: ${(props) => (props.large ? "40px" : "25px")};
 `;
 
 const CardNumber = styled.div`
+  grid-column: 1/3;
   grid-row: 2;
-  grid-column: 1/4;
-  margin-top: 70px;
-  padding: 30px;
-  max-width: 100%;
+  padding: 20px;
+  margin-top: 50px;
   color: ${colors.white};
   letter-spacing: 0.4em;
-  margin-left: 5px;
   border: purple solid 1px;
 `;
 
 const CardName = styled.p`
-  grid-row: 3;
   grid-column: 1;
+  grid-row: 3;
+  margin-top: 10px;
+  margin-left: 20px;
   color: ${colors.white};
   font-size: 0.8rem;
-  margin-left: 35px;
 `;
 
 const CardDate = styled.p`
-  grid-row: 3;
-  grid-column: 3;
   color: ${colors.white};
   font-size: 0.8rem;
-  margin-left: 70px;
 `;
 
 const CardFront = () => {

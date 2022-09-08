@@ -8,7 +8,7 @@ const CardsContainer = () => {
   return (
     <>
       <CardFront />
-      <CardBack />
+      {/* <CardBack /> */}
     </>
   );
 };

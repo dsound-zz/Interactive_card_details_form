@@ -7,8 +7,6 @@ type CircleProps = {
 };
 
 const CardContainer = styled.div`
-  grid-column: 2;
-  grid-row: 2;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -29,15 +27,14 @@ const CardContainer = styled.div`
     left: 5px;
     background-size: 75% 50%;
   }
-
 `;
 
 const CircleContainer = styled.div`
   grid-column: 1;
   grid-row: 1;
-  display: flex; 
+  display: flex;
   flex-direction: row;
-  justify-content: 'space-between';
+  justify-content: "space-between";
   align-items: center;
   width: 50%;
   max-width: 300px;

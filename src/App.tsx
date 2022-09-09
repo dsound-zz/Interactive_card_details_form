@@ -7,18 +7,17 @@ import CardBack from "./Components/CardBack";
 import Form from "./Components/Form";
 
 const AppContainer = styled.div`
-  background-image: url(${backgroundImage});
-  background-repeat: no-repeat;
-  background-size: 20vw 100%;
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    background-image: url(${backgroundImageMobile});
-    background-size: 100vw 30vh;
-  }
+  // background-image: url(${backgroundImage});
+  // background-repeat: no-repeat;
+  // background-size: 20vw 100%;
+  // @media (max-width: 768px) {
+  // }
 `;
 
 const AppGrid = styled.div`
+  background-image: url(${backgroundImage});
+  background-repeat: no-repeat;
+  background-size: 20vw 100%;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: max-content 1.5rem max-content;
@@ -28,11 +27,10 @@ const AppGrid = styled.div`
   empty-cells: ;
   place-content: center;
   @media (max-width: 768px) {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto;
-    grid-template-areas: ". card-2 card-2 card-2." ". card-1 card-1 card-1 ." ". form form form.";
-    min-height: 4rem;
-    max-width: rem;
+    display: flex;
+    flex-direction: column;
+    background-image: url(${backgroundImageMobile});
+    background-size: 100vw 20vh;
   }
 `;
 

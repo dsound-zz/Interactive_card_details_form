@@ -4,41 +4,45 @@ import { colors } from "../util/globalStyles";
 const FormContainer = styled.div`
   grid-area: form;
   display: flex;
+  justify-content: flex-startr;
   flex-flow: row wrap;
-  gap: 0.5rem;
+  gap: 1rem;
   max-height: 8rem;
+  max-width: 20rem;
   padding: 0.5rem;
-  //   @media (max-width: 768px) {
-  //     transform: translate(0rem, 10rem);
-  //   }
+  @media (max-width: 768px) {
+    transform: translate(0rem, -11rem);
+  }
 `;
 
-const FormColumn = styled.div``;
+const InputWrapper = styled.div`
+  flex: 1 0 20rem;
+`;
+
+const SmallInputWrapper = styled.div`
+  border: solid red 1px;
+  align-self: flex-end;
+  max-width: 10rem;
+  margin-right: 1rem;
+`;
 
 const FormInnerWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  flex: 1;
-  padding-right: 1rem;
+  justify-content: space-between;
+  flex-wrap: no-wrap;
+  max-width: 20rem;
 `;
 
-const Label = styled.label`
-  max-width: 20rem;
-  width: 100%;
-  align-self: flex-end;
-  flex: 1;
-`;
+const Label = styled.label``;
 
 const Input = styled.input`
-  max-width: 20rem;
+  max-width: 30rem;
   width: 100%;
   padding: 0.5rem;
-  margin-bottom: 1rem;
 
-  .small {
-    max-width: 10rem;
-  }
+  //   .small {
+  //     max-width: 5rem;
+  //   }
 `;
 
 const Button = styled.button`
@@ -61,25 +65,29 @@ const Form = () => {
 
   return (
     <FormContainer>
-      <Label>Cardholder Name</Label>
-      <Input type="text" />
-
-      <Label>Card Number name</Label>
-      <Input type="text" />
-
+      <InputWrapper>
+        <Label>Cardholder Name</Label>
+        <Input type="text" />
+      </InputWrapper>
+      <InputWrapper>
+        <Label>Card Number name</Label>
+        <Input type="text" />
+      </InputWrapper>
       <FormInnerWrapper>
-        <Label>Exp. Date</Label>
-        <Input className="small" type="text" />
+        <SmallInputWrapper>
+          <Label>Exp. Date</Label>
+          <Input className="small" type="text" />
+        </SmallInputWrapper>
+        <SmallInputWrapper>
+          <Label>(MM/YY)</Label>
+          <Input className="small" type="text" />
+        </SmallInputWrapper>
+        <SmallInputWrapper>
+          <Label>CVC</Label>
+          <Input style={{ width: "6rem" }} className="small" type="text" />
+        </SmallInputWrapper>
       </FormInnerWrapper>
-      <FormInnerWrapper>
-        <Label>(MM/YY)</Label>
-        <Input className="small" type="text" />
-      </FormInnerWrapper>
-      <FormInnerWrapper>
-        <Label>CVC</Label>
-        <Input style={{ width: "6rem" }} className="small" type="text" />
-      </FormInnerWrapper>
-      <Button>continue</Button>
+      {/* <Button>continue</Button> */}
     </FormContainer>
   );
 };

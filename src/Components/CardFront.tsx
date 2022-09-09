@@ -20,8 +20,8 @@ const CardContainer = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   @media (max-width: 768px) {
-    // width: 80vw;
-    // transform: translate(0.1rem, -5rem);
+    width: 80vw;
+    transform: translate(0.1rem, -5rem);
     z-index: 1;
   }
 `;

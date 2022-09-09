@@ -15,10 +15,14 @@ const CardContainer = styled.div`
   grid-template-areas: "circles circles . . . ." "number  number number number number number" " name name . . expDate expDate";
   min-height: 11rem;
   max-width: 100%;
+  width: 20rem;
   background-image: url(${cardFrontImage});
   background-repeat: no-repeat;
   background-size: 100% 100%;
   @media (max-width: 768px) {
+    width: 80vw;
+    transform: translate(0.1rem, -5rem);
+    z-index: 1;
   }
 `;
 

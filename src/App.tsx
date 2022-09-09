@@ -2,53 +2,44 @@ import styled from "styled-components";
 import { CSSReset } from "./util/globalStyles";
 import backgroundImage from "./assets/images/bg-main-desktop.png";
 import backgroundImageMobile from "./assets/images/bg-main-mobile.png";
-import CardsController from "./Components/CardsController";
+import CardFront from "./Components/CardFront";
+import CardBack from "./Components/CardBack";
 
 const AppContainer = styled.div`
-  display: grid;
-  grid-template-columns: 300px 1fr 2fr;
-  grid-template-rows: minmax(100px, auto);
-  width: 100%;
-  height: 100vh;
+  background-image: url(${backgroundImage});
+  background-repeat: no-repeat;
+  background-size: 20vw 100%;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
-  }
-`;
-
-const LeftScreen = styled.div`
-  grid-column: 1/2;
-  background-image: url(${backgroundImage});
-  padding: 0.5em;
-  @media (max-width: 768px) {
-    flex: 1;
     background-image: url(${backgroundImageMobile});
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100vw 30vh;
   }
 `;
 
-const RightScreen = styled.div`
-  grid-column: 2/4;
-  padding: 0.5em;
-  border: blue solid 1px;
-  @media (max-width: 768px) {
-    flex: 2;
-    width: 100%;
-  }
+const AppGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: max-content 1.5rem max-content;
+  min-height: 100vh;
+  grid-template-areas: ". card-1 card-1 card-1 card-1 . form form form form" ". . . . . . form form form form" ". card-2 card-2 card-2 card-2 . form form form form";
+  max-width: 49rem;
+  empty-cells: ;
+  place-content: center;
 `;
 
-function App() {
+const App = () => {
   return (
     <>
       <CSSReset />
       <AppContainer>
-        <LeftScreen>left</LeftScreen>
-        <RightScreen>right</RightScreen>
-        <CardsController />
+        <AppGrid>
+          <CardFront />
+          <CardBack />
+        </AppGrid>
       </AppContainer>
     </>
   );
-}
+};
 
 export default App;

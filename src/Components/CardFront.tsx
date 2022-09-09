@@ -7,73 +7,58 @@ type CircleProps = {
 };
 
 const CardContainer = styled.div`
+  grid-area: card-1;
+  aspect-ration: 3/2;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "circles circles . . . ." "number  number number number number number" " name name . . expDate expDate";
+  min-height: 11rem;
+  max-width: 100%;
   background-image: url(${cardFrontImage});
   background-repeat: no-repeat;
-  padding: 0.5em;
-  position: absolute;
-  top: 250px;
-  left: 180px;
-  z-index: 2;
-  width: 100%;
-  height: 50%;
+  background-size: 100% 100%;
   @media (max-width: 768px) {
-    display: grid;
-    width: 100%;
-    height: 50%;
-    top: 200px;
-    left: 5px;
-    background-size: 75% 50%;
   }
 `;
 
 const CircleContainer = styled.div`
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: circles;
   display: flex;
-  flex-direction: row;
-  justify-content: "space-between";
   align-items: center;
-  width: 50%;
-  max-width: 300px;
-  padding: 0.5em;
-  border: 1px solid orange;
+  transform: translate(0.1rem, 0.5rem);
+  justify-content: flex-start;
   @media (max-width: 768px) {
-    height: 30%;
   }
 `;
 
 const Circle = styled.div<CircleProps>`
   background: ${(props) => props.large && `${colors.white}`};
   border-radius: 50%;
-  margin-left: 20px;
+  margin-left: 1.5rem;
   border: ${colors.white} solid 1px;
   width: ${(props) => (props.large ? "40px" : "25px")};
   height: ${(props) => (props.large ? "40px" : "25px")};
 `;
 
 const CardNumber = styled.div`
-  grid-column: 1/3;
-  grid-row: 2;
-  padding: 20px;
-  margin-top: 50px;
+  grid-area: number;
+  transform: translate(1.2rem, 1.3rem);
   color: ${colors.white};
-  letter-spacing: 0.4em;
-  border: purple solid 1px;
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
 `;
 
 const CardName = styled.p`
-  grid-column: 1;
-  grid-row: 3;
-  margin-top: 10px;
-  margin-left: 20px;
+  grid-area: name;
+  transform: translate(0.8rem, 1.5rem);
   color: ${colors.white};
   font-size: 0.8rem;
 `;
 
 const CardDate = styled.p`
+  grid-area: expDate;
+  transform: translate(2.5rem, 1.5rem);
   color: ${colors.white};
   font-size: 0.8rem;
 `;
@@ -86,9 +71,9 @@ const CardFront = () => {
         <Circle large />
         <Circle />
       </CircleContainer>
-      <CardNumber>2343 3433 3432 3432</CardNumber>
+      <CardNumber>3433 3432 3432 3433</CardNumber>
       <CardName>Demian Sims</CardName>
-      <CardDate>01/01</CardDate>
+      <CardDate>03/25</CardDate>
     </CardContainer>
   );
 };

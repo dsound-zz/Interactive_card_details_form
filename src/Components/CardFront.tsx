@@ -39,7 +39,7 @@ const CircleContainer = styled.div`
 const Circle = styled.div<CircleProps>`
   background: ${(props) => props.large && `${colors.white}`};
   border-radius: 50%;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   border: ${colors.white} solid 1px;
   width: ${(props) => (props.large ? "40px" : "25px")};
   height: ${(props) => (props.large ? "40px" : "25px")};
@@ -47,7 +47,7 @@ const Circle = styled.div<CircleProps>`
 
 const CardNumber = styled.div`
   grid-area: number;
-  transform: translate(1.2rem, 1.3rem);
+  transform: translate(1.2rem, 2rem);
   color: ${colors.white};
   font-size: 1rem;
   letter-spacing: 0.3rem;

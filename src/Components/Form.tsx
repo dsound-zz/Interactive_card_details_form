@@ -4,19 +4,22 @@ import { colors } from "../util/globalStyles"
 const FormContainer = styled.div`
   grid-area: form;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-flow: row wrap;
   gap: 2rem;
-  width: 40%;
-  max-height: 25rem;
+  width: 100%;
+  max-width: 50rem;
+  max-height: 40rem;
   padding: 0.5rem;
+  border: 1px pink solid;
   @media (max-width: 768px) {
     transform: translate(0rem, -11rem);
   }
 `
 
 const InputWrapper = styled.div`
-  flex: 1 0 20rem;
+  max-width: 50rem;
+  width: 100%;
 `
 
 const SmallInputWrapper = styled.div`
@@ -37,7 +40,6 @@ const Label = styled.label`
 `
 
 const Input = styled.input`
-  max-width: 30rem;
   width: 100%;
   padding: 1.2rem;
   margin-top: 0.5rem;

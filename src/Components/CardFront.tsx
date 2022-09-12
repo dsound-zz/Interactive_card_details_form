@@ -13,11 +13,12 @@ const CardContainer = styled.div`
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: max-content;
   grid-template-areas: "circles circles . . . ." "number  number number number number number" " name name . . expDate expDate";
-  max-width: 100%;
+  width: 100%;
   max-height: 20rem;
+
+  transform: translate(-2rem, 0.5rem);
   background-image: url(${cardFrontImage});
   background-repeat: no-repeat;
-  // background-size: 100% 100%;
   @media (max-width: 768px) {
     width: 80vw;
     transform: translate(0.1rem, -5rem);

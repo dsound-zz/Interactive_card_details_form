@@ -6,8 +6,9 @@ const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  gap: 1rem;
+  gap: 2rem;
   width: 40%;
+  max-height: 25rem;
   padding: 0.5rem;
   @media (max-width: 768px) {
     transform: translate(0rem, -11rem);
@@ -21,7 +22,6 @@ const InputWrapper = styled.div`
 const SmallInputWrapper = styled.div`
   border: solid red 1px;
   align-self: flex-end;
-  max-width: 10rem;
   margin-right: 1rem;
 `
 
@@ -29,15 +29,21 @@ const FormInnerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: no-wrap;
-  max-width: 20rem;
+  min-width: 20rem;
 `
 
-const Label = styled.label``
+const Label = styled.label`
+  color: ${colors.darkViolet};
+`
 
 const Input = styled.input`
   max-width: 30rem;
   width: 100%;
-  padding: 0.5rem;
+  padding: 1.2rem;
+  margin-top: 0.5rem;
+  border: 1px solid ${colors.darkGrey};
+  border-radius: 5px;
+  outline: none;
 
   //   .small {
   //     max-width: 5rem;
@@ -46,13 +52,14 @@ const Input = styled.input`
 
 const Button = styled.button`
   background-color: ${colors.darkViolet};
-  width: 2rem;
+  min-width: 20rem;
   flex: 1;
   justify-self: center;
   padding: 0.5rem;
+  margin-top: 1rem;
   cursor: pointer;
   color: ${colors.white};
-
+  font-size: 1.5rem;
   &:hover {
     color: rgba(255, 255, 255, 1);
     box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
@@ -69,7 +76,7 @@ const Form = () => {
         <Input type='text' />
       </InputWrapper>
       <InputWrapper>
-        <Label>Card Number name</Label>
+        <Label>Card Number Name</Label>
         <Input type='text' />
       </InputWrapper>
       <FormInnerWrapper>
@@ -86,7 +93,7 @@ const Form = () => {
           <Input style={{ width: "6rem" }} className='small' type='text' />
         </SmallInputWrapper>
       </FormInnerWrapper>
-      {/* <Button>continue</Button> */}
+      <Button>confirm</Button>
     </FormContainer>
   )
 }

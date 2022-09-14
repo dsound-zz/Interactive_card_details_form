@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import cardBackImage from "../assets/images/bg-card-back.png";
-import { colors } from "../util/globalStyles";
+import styled from "styled-components"
+import cardBackImage from "../assets/images/bg-card-back.png"
+import { colors } from "../util/globalStyles"
 
 const CardContainer = styled.div`
   grid-area: card-2;
@@ -11,6 +11,7 @@ const CardContainer = styled.div`
   justify-content: flex-end;
   max-height: 20rem;
   min-height: 10rem;
+  width: 100%;
   transform: translate(3rem, 2rem);
   background-image: url(${cardBackImage});
   background-repeat: no-repeat;
@@ -19,19 +20,19 @@ const CardContainer = styled.div`
     width: 80vw;
     transform: translate(4.5rem, -20rem);
   }
-`;
+`
 
 const CardCode = styled.div`
   margin-right: 2rem;
   color: ${colors.white};
-`;
+`
 const CardBack = () => {
-  console.log("cardback");
+  console.log("cardback")
   return (
     <CardContainer>
       <CardCode>007</CardCode>
     </CardContainer>
-  );
-};
+  )
+}
 
-export default CardBack;
+export default CardBack

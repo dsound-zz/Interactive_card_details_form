@@ -19,8 +19,8 @@ const CardContainer = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   @media (max-width: 768px) {
-    width: 80%;
-    transform: translate(1.5rem, -31rem);
+    // width: 80%;
+    // transform: translate(1.5rem, -31rem);
   }
 `
 
@@ -30,8 +30,8 @@ const CardCode = styled.div`
   font-size: 2rem;
   transform: translate(0.2rem, 0.3rem);
   @media (max-width: 768px) {
-    font-size: 1rem;
-    transform: translate(4rem, 0.2rem);
+    // font-size: 1rem;
+    // transform: translate(4rem, 0.2rem);
   }
 `
 const CardBack = () => {

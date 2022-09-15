@@ -29,12 +29,12 @@ const AppGrid = styled.div`
   background-repeat: no-repeat;
   background-size: 20% 100%;
   @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url(${backgroundImageMobile});
-    background-repeat: no-repeat;
-    background-size: 100% 30%;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // background-image: url(${backgroundImageMobile});
+    // background-repeat: no-repeat;
+    // background-size: 100% 30%;
   }
 `
 
@@ -47,10 +47,10 @@ const App = () => {
         <AppGrid>
           <CardFront />
           <CardBack />
-          {/* <Form
+          <Form
             showSubmitMessage={showSubmitMessage}
             shouldShowSubmitMessage={shouldShowSubmitMessage}
-          /> */}
+          />
         </AppGrid>
       </AppContainer>
     </>

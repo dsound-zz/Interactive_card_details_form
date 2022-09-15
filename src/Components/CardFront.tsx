@@ -20,11 +20,11 @@ const CardContainer = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   @media (max-width: 768px) {
-    background-size: 80% 50%;
-    z-index: 1;
-    width: 100%;
-    max-height: 27rem;
-    transform: translate(1.5rem, 2rem);
+    // background-size: 80% 50%;
+    // z-index: 1;
+    // width: 100%;
+    // max-height: 27rem;
+    // transform: translate(1.5rem, 2rem);
   }
 `
 
@@ -41,9 +41,9 @@ const CardNumber = styled.div`
   font-size: 2rem;
   letter-spacing: 0.8rem;
   @media (max-width: 768px) {
-    transform: translate(-0.4rem, -2rem);
-    font-size: 0.7rem;
-    letter-spacing: 0.4rem;
+    // transform: translate(-0.4rem, -2rem);
+    // font-size: 0.7rem;
+    // letter-spacing: 0.4rem;
   }
 `
 
@@ -66,9 +66,7 @@ const CardFront = () => {
   return (
     <CardContainer>
       <CardLogoContainer>
-        <CardLogo
-        // viewBox={`0 0 ${originalWidth} ${originalHeight}`}
-        />
+        <CardLogo />
       </CardLogoContainer>
       <CardNumber>3433 3432 3432 3433</CardNumber>
       <CardName>Demian Sims</CardName>

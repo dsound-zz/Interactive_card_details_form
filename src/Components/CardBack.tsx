@@ -9,22 +9,30 @@ const CardContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  max-height: 20rem;
-  min-height: 10rem;
+  padding: 2rem;
+  max-width: 50rem;
   width: 100%;
+  grid-gap: 3rem;
+  max-height: 27rem;
   transform: translate(3rem, 2rem);
   background-image: url(${cardBackImage});
   background-repeat: no-repeat;
-  background-size: 30vw;
+  background-size: 100% 100%;
   @media (max-width: 768px) {
-    width: 80vw;
-    transform: translate(4.5rem, -20rem);
+    width: 80%;
+    transform: translate(1.5rem, -31rem);
   }
 `
 
 const CardCode = styled.div`
-  margin-right: 2rem;
+  margin-right: 4rem;
   color: ${colors.white};
+  font-size: 2rem;
+  transform: translate(0.2rem, 0.3rem);
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    transform: translate(4rem, 0.2rem);
+  }
 `
 const CardBack = () => {
   console.log("cardback")

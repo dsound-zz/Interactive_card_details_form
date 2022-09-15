@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 import { CSSReset } from "./util/globalStyles"
 import backgroundImage from "./assets/images/bg-main-desktop.png"
@@ -7,9 +8,9 @@ import CardBack from "./Components/CardBack"
 import Form from "./Components/Form"
 
 const AppContainer = styled.div`
-  background-image: url(${backgroundImage});
-  background-repeat: no-repeat;
-  background-size: 20% 100%;
+  // background-image: url(${backgroundImage});
+  // background-repeat: no-repeat;
+  // background-size: 20% 100%;
   @media (max-width: 768px) {
   }
 `
@@ -24,15 +25,21 @@ const AppGrid = styled.div`
   padding: 0.5rem;
   empty-cells: ;
   place-content: center;
+  background-image: url(${backgroundImage});
+  background-repeat: no-repeat;
+  background-size: 20% 100%;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-image: url(${backgroundImageMobile});
-    background-size: 100vw 20vh;
+    background-repeat: no-repeat;
+    background-size: 100% 30%;
   }
 `
 
 const App = () => {
+  const [showSubmitMessage, shouldShowSubmitMessage] = useState<boolean>(false)
   return (
     <>
       <CSSReset />
@@ -40,7 +47,10 @@ const App = () => {
         <AppGrid>
           <CardFront />
           <CardBack />
-          <Form />
+          {/* <Form
+            showSubmitMessage={showSubmitMessage}
+            shouldShowSubmitMessage={shouldShowSubmitMessage}
+          /> */}
         </AppGrid>
       </AppContainer>
     </>

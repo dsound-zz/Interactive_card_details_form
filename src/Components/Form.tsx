@@ -1,5 +1,12 @@
 import styled from "styled-components"
+import Button from "../util/FormComponents/Button"
 import { colors } from "../util/globalStyles"
+import SubmitMessage from "./SubmitMessage"
+
+type FormProps = {
+  showSubmitMessage: boolean
+  shouldShowSubmitMessage: (boolean: boolean) => void
+}
 
 type InputProps = {
   small?: boolean
@@ -9,7 +16,9 @@ const FormContainer = styled.div`
   grid-area: form;
   display: flex;
   flex-direction: column;
+  margin-top: 8rem;
   gap: 5rem;
+  max-width: 35rem;
 `
 
 const FormRow = styled.div`
@@ -37,54 +46,49 @@ const Input = styled.input<InputProps>`
   outline: none;
   padding: 1rem;
   width: 100%;
+  max-width: 30rem;
+  margin-top: 0.5rem;
 `
 
-const Button = styled.button`
-  background-color: ${colors.darkViolet};
-  cursor: pointer;
-  color: ${colors.white};
-  font-size: 2rem;
-  width: 100%;
-  padding: 1rem;
-  align-self: center;
-  &:hover {
-    color: rgba(255, 255, 255, 1);
-    box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
-  }
-`
-
-const Form = () => {
+const Form = ({ showSubmitMessage, shouldShowSubmitMessage }: FormProps) => {
   console.log("form")
 
   return (
-    <FormContainer>
-      <FormRow>
-        <InputWrapper>
-          <Label>CARDHOLDER NAME</Label>
-          <Input type='text' />
-        </InputWrapper>
-      </FormRow>
-      <FormRow>
-        <InputWrapper>
-          <Label>CARD NUMBER</Label>
-          <Input type='text' />
-        </InputWrapper>
-      </FormRow>
-      <FormRow>
-        <InputWrapper small>
-          <Label>EXP. DATE (MM/YY)</Label>
+    <>
+      {showSubmitMessage ? (
+        <SubmitMessage shouldShowSubmitMessage={shouldShowSubmitMessage} />
+      ) : (
+        <FormContainer>
           <FormRow>
-            {" "}
-            <Input type='text' /> <Input type='text' />{" "}
+            <InputWrapper>
+              <Label>CARDHOLDER NAME</Label>
+              <Input type='text' placeholder='e.g. Jane Applesead' />
+            </InputWrapper>
           </FormRow>
-        </InputWrapper>
-        <InputWrapper small>
-          <Label>CVC</Label>
-          <Input type='text' />
-        </InputWrapper>
-      </FormRow>
-      <Button>confirm</Button>
-    </FormContainer>
+          <FormRow>
+            <InputWrapper>
+              <Label>CARD NUMBER</Label>
+              <Input type='text' placeholder='e.g. 1234 5678 9801 2345' />
+            </InputWrapper>
+          </FormRow>
+          <FormRow>
+            <InputWrapper small>
+              <Label>EXP. DATE (MM/YY)</Label>
+              <FormRow>
+                {" "}
+                <Input type='text' placeholder='MM' />{" "}
+                <Input type='text' placeholder='YY' />{" "}
+              </FormRow>
+            </InputWrapper>
+            <InputWrapper small>
+              <Label>CVC</Label>
+              <Input type='text' placeholder='e.g. 123' />
+            </InputWrapper>
+          </FormRow>
+          <Button buttonText='Confirm' onClick={() => console.log("click")} />
+        </FormContainer>
+      )}
+    </>
   )
 }
 

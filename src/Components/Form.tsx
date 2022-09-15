@@ -17,8 +17,8 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 8rem;
-  gap: 5rem;
-  max-width: 35rem;
+  gap: 4rem;
+  max-width: 40rem;
 `
 
 const FormRow = styled.div`
@@ -32,12 +32,13 @@ const FormRow = styled.div`
 const InputWrapper = styled.div<InputProps>`
   display: flex;
   flex-direction: column;
-  width: ${(props) => (props.small ? "40%" : "100%")};
+  width: ${(props) => (props.small ? "50%" : "100%")};
 `
 
 const Label = styled.label`
   color: ${colors.darkViolet};
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  white-space: nowrap;
 `
 
 const Input = styled.input<InputProps>`

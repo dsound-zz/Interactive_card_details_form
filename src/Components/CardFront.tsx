@@ -36,9 +36,9 @@ const CardLogoContainer = styled.div`
 
 const CardNumber = styled.div`
   grid-area: number;
-  transform: translate(3rem, 3rem);
+  transform: translate(1.5rem, 3rem);
   color: ${colors.white};
-  font-size: 2rem;
+  font-size: 1.3rem;
   letter-spacing: 0.8rem;
   @media (max-width: 768px) {
     // transform: translate(-0.4rem, -2rem);
@@ -49,7 +49,7 @@ const CardNumber = styled.div`
 
 const CardName = styled.p`
   grid-area: name;
-  transform: translate(3rem, 4rem);
+  transform: translate(1.5rem, 4rem);
   color: ${colors.white};
   font-size: 1.2rem;
 `

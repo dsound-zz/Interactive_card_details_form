@@ -47,7 +47,7 @@ const Input = styled.input<InputProps>`
   outline: none;
   padding: 1rem;
   width: 100%;
-  max-width: 30rem;
+  max-width: 50rem;
   margin-top: 0.5rem;
 `
 

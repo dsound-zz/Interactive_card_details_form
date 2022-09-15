@@ -10,7 +10,8 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   padding: 2rem;
-  max-width: 50rem;
+  max-width: 40rem;
+  min-width: 20rem;
   width: 100%;
   grid-gap: 3rem;
   max-height: 27rem;
@@ -25,10 +26,11 @@ const CardContainer = styled.div`
 `
 
 const CardCode = styled.div`
-  margin-right: 4rem;
   color: ${colors.white};
-  font-size: 2rem;
-  transform: translate(0.2rem, 0.3rem);
+  font-size: 1.6rem;
+  border: 2px solid pink;
+  margin-right: 2rem;
+  flex: 0 1 2rem;
   @media (max-width: 768px) {
     // font-size: 1rem;
     // transform: translate(4rem, 0.2rem);

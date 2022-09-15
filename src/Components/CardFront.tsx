@@ -8,11 +8,11 @@ const CardContainer = styled.div`
   aspect-ratio: 3/2;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: max-content 1rem max-content;
   grid-template-areas: "logo logo . . . ." "number  number number number number number" " name name . . expDate expDate";
   padding: 2rem;
-  max-width: 50rem;
-  max-height: 27rem;
+  max-width: 40rem;
+  min-width: 20rem;
   width: 100%;
   grid-gap: 3rem;
   transform: translate(-2rem, 0.5rem);
@@ -36,7 +36,7 @@ const CardLogoContainer = styled.div`
 
 const CardNumber = styled.div`
   grid-area: number;
-  transform: translate(1.5rem, 3rem);
+  transform: translate(1.5rem, 7rem);
   color: ${colors.white};
   font-size: 1.3rem;
   letter-spacing: 0.8rem;
@@ -49,14 +49,14 @@ const CardNumber = styled.div`
 
 const CardName = styled.p`
   grid-area: name;
-  transform: translate(1.5rem, 4rem);
+  transform: translate(1.5rem, 9rem);
   color: ${colors.white};
   font-size: 1.2rem;
 `
 
 const CardDate = styled.p`
   grid-area: expDate;
-  transform: translate(5rem, 4rem);
+  transform: translate(5rem, 9rem);
   color: ${colors.white};
   font-size: 1.2rem;
 `

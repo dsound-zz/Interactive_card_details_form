@@ -12,9 +12,9 @@ const CardContainer = styled.div`
   grid-template-areas: "logo logo . . . ." "number  number number number number number" " name name . . expDate expDate";
   padding: 2rem;
   max-width: 50rem;
+  max-height: 27rem;
   width: 100%;
   grid-gap: 3rem;
-  max-height: 27rem;
   transform: translate(-2rem, 0.5rem);
   background-image: url(${cardFrontImage});
   background-repeat: no-repeat;

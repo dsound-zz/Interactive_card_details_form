@@ -13,12 +13,15 @@ type InputProps = {
 }
 
 const FormContainer = styled.div`
-  grid-area: form;
   display: flex;
   flex-direction: column;
-  margin-top: 8rem;
-  gap: 4rem;
-  max-width: 40rem;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 30rem;
+  width: 100%
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  gap: 1rem 0;
+
 `
 
 const FormRow = styled.div`
@@ -47,7 +50,6 @@ const Input = styled.input<InputProps>`
   outline: none;
   padding: 1rem;
   width: 100%;
-  max-width: 50rem;
   margin-top: 0.5rem;
 `
 

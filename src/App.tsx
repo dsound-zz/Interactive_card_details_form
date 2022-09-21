@@ -8,34 +8,47 @@ import CardBack from "./Components/CardBack"
 import Form from "./Components/Form"
 
 const AppContainer = styled.div`
-  // background-image: url(${backgroundImage});
-  // background-repeat: no-repeat;
-  // background-size: 20% 100%;
-  @media (max-width: 768px) {
-  }
-`
-
-const AppGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: max-content 1.5rem max-content;
-  grid-template-areas: ". card-1 card-1 card-1 card-1 . form form form form" ". . . . . . form form form form" ". card-2 card-2 card-2 card-2 . form form form form";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  max-width: 100%;
-  padding: 0.5rem;
-  empty-cells: ;
-  place-content: center;
+  width: 100%;
+  max-width: 2400px;
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
-  background-size: 20% 100%;
+  background-size: 30% 100%;
   @media (max-width: 768px) {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // background-image: url(${backgroundImageMobile});
-    // background-repeat: no-repeat;
-    // background-size: 100% 30%;
-  }
+    background-size: 100% 30%;
+    max-width: 100%;
+  } ;
+`
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border: 2px blue solid;
+  width: 100%;
+  max-width: 1900px;
+
+  padding: 1rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 90%;
+  } ;
+`
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 2px solid green;
+  width: 100%;
+  max-width: 40rem;
+  gap: 2rem;
+  @media (max-width: 768px) {
+    justify-content: center;
+  } ;
 `
 
 const App = () => {
@@ -44,14 +57,17 @@ const App = () => {
     <>
       <CSSReset />
       <AppContainer>
-        <AppGrid>
-          <CardFront />
-          <CardBack />
+        <Row>
+          <CardContainer>
+            <CardFront />
+
+            <CardBack />
+          </CardContainer>
           <Form
             showSubmitMessage={showSubmitMessage}
             shouldShowSubmitMessage={shouldShowSubmitMessage}
           />
-        </AppGrid>
+        </Row>
       </AppContainer>
     </>
   )

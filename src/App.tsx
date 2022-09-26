@@ -44,10 +44,11 @@ const CardContainer = styled.div`
   flex-direction: column;
   border: 2px solid green;
   width: 100%;
-  max-width: 40rem;
-  gap: 2rem;
+  max-width: 45rem;
+  gap: 1rem;
   @media (max-width: 768px) {
     justify-content: center;
+    width: 95%;
   } ;
 `
 

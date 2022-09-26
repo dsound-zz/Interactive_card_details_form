@@ -6,11 +6,11 @@ const CardContainer = styled.div`
   aspect-ratio: 5/3;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
   align-self: flex-end;
   width: 100%;
   max-width: 25rem;
-  border: purple solid 2px;
   background-image: url(${cardBackImage});
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -23,11 +23,13 @@ const CardContainer = styled.div`
 
 const CardCode = styled.div`
   color: ${colors.white};
-  font-size: 1.6rem;
-  border: 2px solid pink;
-  margin-right: 2rem;
-  flex: 0 1 2rem;
+  font-size: 1.2rem;
+  width: 100%;
+  max-width: 100px;
+  flex: 0 1 5.5rem;
   @media (max-width: 768px) {
+    flex: 0 1 3rem;
+    font-size: 0.8rem;
   }
 `
 const CardBack = () => {

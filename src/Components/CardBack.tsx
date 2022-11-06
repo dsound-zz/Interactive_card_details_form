@@ -2,6 +2,10 @@ import styled from "styled-components"
 import cardBackImage from "../assets/images/bg-card-back.png"
 import { colors } from "../util/globalStyles"
 
+type CardBackProps = {
+  cvc: string
+}
+
 const CardContainer = styled.div`
   aspect-ratio: 5/3;
   display: flex;
@@ -32,11 +36,11 @@ const CardCode = styled.div`
     font-size: 0.8rem;
   }
 `
-const CardBack = () => {
+const CardBack = ({ cvc }: CardBackProps) => {
   console.log("cardback")
   return (
     <CardContainer>
-      <CardCode>007</CardCode>
+      <CardCode>{cvc || "007"}</CardCode>
     </CardContainer>
   )
 }

@@ -21,8 +21,8 @@ const ButtonStyle = styled.button`
   }
 `
 
-const Button = ({ buttonText }: ButtonProps) => (
-  <ButtonStyle>{buttonText}</ButtonStyle>
+const Button = ({ buttonText, onClick }: ButtonProps) => (
+  <ButtonStyle onClick={onClick}>{buttonText}</ButtonStyle>
 )
 
 export default Button

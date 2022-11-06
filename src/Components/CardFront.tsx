@@ -2,6 +2,11 @@ import styled from "styled-components"
 import cardFrontImage from "../assets/images/bg-card-front.png"
 import { colors } from "../util/globalStyles"
 import { ReactComponent as CardLogo } from "../assets/images/card-logo.svg"
+import { CardDetailTypes } from "../util/types"
+
+type CardFrontProps = {
+  cardDetails: CardDetailTypes
+}
 
 const CardContainer = styled.div`
   aspect-ratio: 5/3;
@@ -66,14 +71,28 @@ const CardDate = styled.p`
   } ;
 `
 
-const CardFront = () => {
+const CardFront = ({ cardDetails }: CardFrontProps) => {
   console.log("cardfront")
+
+  const cardNumDisplay = (cardNum: string) => {
+    return `${cardNum.slice(0, 4)} ${cardNum.slice(4, 8)} ${cardNum.slice(
+      8,
+      12
+    )} ${cardNum.slice(12, 16)}`
+  }
+
   return (
     <CardContainer>
       <StyledCardLogo />
-      <CardNumber>3433 3432 3432 3433</CardNumber>
-      <CardName>Demian Sims</CardName>
-      <CardDate>03/25</CardDate>
+      <CardNumber>
+        {cardDetails.cardNumber.length
+          ? cardNumDisplay(cardDetails.cardNumber)
+          : "0000 0000 0000 0000"}
+      </CardNumber>
+      <CardName>{cardDetails.name || "Jane Appleseed"}</CardName>
+      <CardDate>
+        {cardDetails.expDate.month || "02"}/{cardDetails.expDate.year || "22"}
+      </CardDate>
     </CardContainer>
   )
 }

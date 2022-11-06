@@ -1,12 +1,16 @@
 import styled from "styled-components"
 import Button from "../util/FormComponents/Button"
 import { colors, isMobile } from "../util/globalStyles"
+import { CardDetailTypes, ErrorProps } from "../util/types"
 import SubmitMessage from "./SubmitMessage"
-console.log(isMobile)
 
 type FormProps = {
   showSubmitMessage: boolean
   shouldShowSubmitMessage: (boolean: boolean) => void
+  handleCardDetails: (items: CardDetailTypes) => void
+  cardDetails: CardDetailTypes
+  formErrors: ErrorProps
+  onSubmit: () => void
 }
 
 type FormContainerProps = {
@@ -67,15 +71,27 @@ const Input = styled.input<InputProps>`
   margin: 0.5rem;
 `
 
+const ErrorRow = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 const ErrorText = styled.div`
   color: ${colors.red};
   font-size: 0.8rem;
   margin-left: 1rem;
 `
 
-const Form = ({ showSubmitMessage, shouldShowSubmitMessage }: FormProps) => {
+const Form = ({
+  showSubmitMessage,
+  shouldShowSubmitMessage,
+  handleCardDetails,
+  cardDetails,
+  formErrors,
+  onSubmit,
+}: FormProps) => {
   console.log("form")
-
+  console.log(cardDetails)
   return (
     <>
       {showSubmitMessage ? (
@@ -85,14 +101,28 @@ const Form = ({ showSubmitMessage, shouldShowSubmitMessage }: FormProps) => {
           <FormRow>
             <InputWrapper>
               <Label>CARDHOLDER NAME</Label>
-              <Input type='text' placeholder='e.g. Jane Applesead' />
+              <Input
+                name='name'
+                type='text'
+                value={cardDetails?.name}
+                placeholder='e.g. Jane Applesead'
+                maxLength={30}
+                onChange={(e: any) => handleCardDetails(e)}
+              />
             </InputWrapper>
           </FormRow>
           <FormRow wrap>
             <InputWrapper>
               <Label>CARD NUMBER</Label>
-              <Input type='text' placeholder='e.g. 1234 5678 9801 2345' />
-              <ErrorText>Wrong format, numbers only</ErrorText>
+              <Input
+                name='cardNumber'
+                type='text'
+                value={cardDetails.cardNumber}
+                placeholder='e.g. 1234 5678 9801 2345'
+                maxLength={19}
+                onChange={(e: any) => handleCardDetails(e)}
+              />
+              {/* <ErrorText>Wrong format, numbers only</ErrorText> */}
             </InputWrapper>
           </FormRow>
           <FormRow>
@@ -106,29 +136,56 @@ const Form = ({ showSubmitMessage, shouldShowSubmitMessage }: FormProps) => {
               >
                 <Label style={{ width: "100%" }}>EXP. DATE (MM/YY)</Label>{" "}
                 <Input
+                  name='month'
                   style={{
                     flex: isMobile ? "1 0 3.3rem" : "1 0 4rem",
                   }}
                   type='text'
+                  value={cardDetails?.expDate.month}
                   placeholder='MM'
+                  maxLength={2}
+                  onChange={(e: any) => handleCardDetails(e)}
                 />
                 <Input
+                  name='year'
                   style={{ flex: isMobile ? "1 0 3rem" : "1 0 4rem" }}
                   type='text'
+                  value={cardDetails?.expDate.year}
                   placeholder='YY'
+                  maxLength={2}
+                  onChange={(e: any) => handleCardDetails(e)}
                 />{" "}
-                <ErrorText>Can't be blank</ErrorText>
+                <ErrorRow>
+                  {formErrors.month.isBlank && (
+                    <ErrorText>Can't be blank</ErrorText>
+                  )}
+                  {formErrors.year.isBlank && (
+                    <ErrorText>Can't be blankss</ErrorText>
+                  )}
+                </ErrorRow>
               </FormRow>
             </InputWrapper>
             <InputWrapper small>
               <FormRow wrap>
                 <Label>CVC</Label>
-                <Input type='text' placeholder='e.g. 123' />
-                <ErrorText>Can't be blank</ErrorText>
+                <Input
+                  maxLength={3}
+                  name='cvc'
+                  type='text'
+                  value={cardDetails?.cvc}
+                  placeholder='e.g. 123'
+                  onChange={(e: any) => handleCardDetails(e)}
+                />
+                {formErrors.cvc.isBlank && (
+                  <ErrorText>Can't be blank</ErrorText>
+                )}
+                {formErrors.cvc.isMinLength && (
+                  <ErrorText>Must be at least 3 numbers</ErrorText>
+                )}
               </FormRow>
             </InputWrapper>
           </FormRow>
-          <Button buttonText='Confirm' onClick={() => console.log("click")} />
+          <Button buttonText='Confirm' onClick={() => onSubmit()} />
         </FormContainer>
       )}
     </>

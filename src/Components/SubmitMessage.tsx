@@ -33,6 +33,9 @@ const LargeText = styled.div`
 const SmallText = styled.div`
   color: ${colors.darkGrey};
   font-size: 1.3rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  } ;
 `
 
 const SubmitMessage = ({ resetForm }: SubmitMessageProps) => {

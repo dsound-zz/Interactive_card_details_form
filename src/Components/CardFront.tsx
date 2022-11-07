@@ -37,7 +37,6 @@ const StyledCardLogo = styled(CardLogo)`
   height: auto;
   padding-top: 0.3rem;
   margin-left: 0.5rem;
-  border: 1px red solid;
   @media (max-width: 768px) {
     transform: scale(1.9);
   } ;
@@ -46,10 +45,12 @@ const StyledCardLogo = styled(CardLogo)`
 const CardNumber = styled.div`
   grid-area: number;
   color: ${colors.white};
-  letter-spacing: 0.6rem;
+  letter-spacing: 0.4rem;
+  font-size: 1.2rem;
   margin-top: 1rem;
+  margin-left: 1rem;
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 1rem;
     letter-spacing: 0.1rem;
     margin-top: 0.5rem;
   } ;

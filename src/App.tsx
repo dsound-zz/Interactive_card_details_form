@@ -30,7 +30,6 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  border: 2px blue solid;
   width: 100%;
   max-width: 1900px;
 
@@ -44,10 +43,11 @@ const Row = styled.div`
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 2px solid green;
+  flex: 1;
   width: 100%;
-  max-width: 45rem;
-  gap: 1rem;
+  max-width: 40rem;
+  padding: 3rem;
+  grid-gap: 1rem;
   @media (max-width: 768px) {
     justify-content: center;
     width: 95%;

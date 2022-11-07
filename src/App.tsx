@@ -125,10 +125,8 @@ const App = () => {
     }
 
     if (flattenErrors().includes(true)) {
-      console.log("setErrors", setErrors)
       setFormErrors(setErrors)
     } else {
-      console.log("ok")
       shouldShowSubmitMessage(true)
     }
   }

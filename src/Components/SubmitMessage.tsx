@@ -4,7 +4,7 @@ import { ReactComponent as CompleteLogo } from "../assets/images/icon-complete.s
 import Button from "../util/FormComponents/Button"
 
 type SubmitMessageProps = {
-  shouldShowSubmitMessage: (boolean: boolean) => void
+  resetForm: () => void
 }
 
 const MessageContainer = styled.div`
@@ -14,13 +14,20 @@ const MessageContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 5rem;
-  padding: 10rem;
+  padding: 3rem;
   width: 100%;
+  border: solid blue 1px;
 `
 
 const LargeText = styled.div`
   color: ${colors.darkViolet};
   font-size: 4rem;
+  width: 100%;
+  border: 1px solid red;
+  text-align: center;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  } ;
 `
 
 const SmallText = styled.div`
@@ -28,7 +35,7 @@ const SmallText = styled.div`
   font-size: 1.3rem;
 `
 
-const SubmitMessage = ({ shouldShowSubmitMessage }: SubmitMessageProps) => {
+const SubmitMessage = ({ resetForm }: SubmitMessageProps) => {
   console.log("thank you")
 
   return (
@@ -36,10 +43,7 @@ const SubmitMessage = ({ shouldShowSubmitMessage }: SubmitMessageProps) => {
       <CompleteLogo />
       <LargeText>Thank You!</LargeText>
       <SmallText>We've added your card details</SmallText>
-      <Button
-        buttonText='Continue'
-        onClick={() => shouldShowSubmitMessage(false)}
-      />
+      <Button buttonText='Continue' onClick={() => resetForm()} />
     </MessageContainer>
   )
 }

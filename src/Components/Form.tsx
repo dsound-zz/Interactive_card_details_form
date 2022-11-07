@@ -6,7 +6,7 @@ import SubmitMessage from "./SubmitMessage"
 
 type FormProps = {
   showSubmitMessage: boolean
-  shouldShowSubmitMessage: (boolean: boolean) => void
+  resetForm: () => void
   handleCardDetails: (items: CardDetailTypes) => void
   cardDetails: CardDetailTypes
   formErrors: ErrorProps
@@ -30,7 +30,7 @@ const FormContainer = styled.div<FormContainerProps>`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  max-width: ${(props) => (props.mobile ? "50rem" : "30rem")};
+  max-width: ${(props) => (props.mobile ? "30rem" : "25rem")};
   width: 100%
   padding: 1rem 0.5rem 1rem 0.5rem;
   gap: 1rem 0;
@@ -42,7 +42,6 @@ const FormRow = styled.div<FormRowProps>`
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  border: solid 1px orange;
 `
 
 const InputWrapper = styled.div<InputProps>`
@@ -71,20 +70,29 @@ const Input = styled.input<InputProps>`
   margin: 0.5rem;
 `
 
-const ErrorRow = styled.div`
+const SmallColumn = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 20%;
+  padding: 0.4rem;
+  width: 50%;
 `
 
 const ErrorText = styled.div`
   color: ${colors.red};
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   margin-left: 1rem;
+  width: 100%;
+  align-text: left;
+  @media (max-width: 768px) {
+    font-size: 0.5rem;
+  } ;
 `
 
 const Form = ({
   showSubmitMessage,
-  shouldShowSubmitMessage,
+  resetForm,
   handleCardDetails,
   cardDetails,
   formErrors,
@@ -95,7 +103,7 @@ const Form = ({
   return (
     <>
       {showSubmitMessage ? (
-        <SubmitMessage shouldShowSubmitMessage={shouldShowSubmitMessage} />
+        <SubmitMessage resetForm={resetForm} />
       ) : (
         <FormContainer mobile={isMobile}>
           <FormRow>
@@ -127,61 +135,63 @@ const Form = ({
           </FormRow>
           <FormRow>
             <InputWrapper small>
-              <FormRow
-                wrap
-                style={{
-                  flexWrap: "wrap",
-                  width: isMobile ? "9.5rem" : "100%",
-                }}
-              >
-                <Label style={{ width: "100%" }}>EXP. DATE (MM/YY)</Label>{" "}
-                <Input
-                  name='month'
-                  style={{
-                    flex: isMobile ? "1 0 3.3rem" : "1 0 4rem",
-                  }}
-                  type='text'
-                  value={cardDetails?.expDate.month}
-                  placeholder='MM'
-                  maxLength={2}
-                  onChange={(e: any) => handleCardDetails(e)}
-                />
-                <Input
-                  name='year'
-                  style={{ flex: isMobile ? "1 0 3rem" : "1 0 4rem" }}
-                  type='text'
-                  value={cardDetails?.expDate.year}
-                  placeholder='YY'
-                  maxLength={2}
-                  onChange={(e: any) => handleCardDetails(e)}
-                />{" "}
-                <ErrorRow>
+              <FormRow>
+                <SmallColumn>
+                  <Label style={{ width: "100%" }}>EXP. DATE</Label>{" "}
+                  <Input
+                    name='month'
+                    style={{
+                      flex: isMobile ? "1 0 3.3rem" : "1 0 4rem",
+                    }}
+                    type='text'
+                    value={cardDetails?.expDate.month}
+                    placeholder='MM'
+                    maxLength={2}
+                    onChange={(e: any) => handleCardDetails(e)}
+                  />
                   {formErrors.month.isBlank && (
                     <ErrorText>Can't be blank</ErrorText>
                   )}
+                </SmallColumn>
+                <SmallColumn>
+                  <Label style={{ width: "100%", marginLeft: "10px" }}>
+                    (MM/YY)
+                  </Label>{" "}
+                  <Input
+                    name='year'
+                    style={{ flex: isMobile ? "1 0 3rem" : "1 0 4rem" }}
+                    type='text'
+                    value={cardDetails?.expDate.year}
+                    placeholder='YY'
+                    maxLength={2}
+                    onChange={(e: any) => handleCardDetails(e)}
+                  />{" "}
                   {formErrors.year.isBlank && (
-                    <ErrorText>Can't be blankss</ErrorText>
+                    <ErrorText>Can't be blank</ErrorText>
                   )}
-                </ErrorRow>
+                </SmallColumn>
               </FormRow>
             </InputWrapper>
             <InputWrapper small>
               <FormRow wrap>
-                <Label>CVC</Label>
-                <Input
-                  maxLength={3}
-                  name='cvc'
-                  type='text'
-                  value={cardDetails?.cvc}
-                  placeholder='e.g. 123'
-                  onChange={(e: any) => handleCardDetails(e)}
-                />
-                {formErrors.cvc.isBlank && (
-                  <ErrorText>Can't be blank</ErrorText>
-                )}
-                {formErrors.cvc.isMinLength && (
-                  <ErrorText>Must be at least 3 numbers</ErrorText>
-                )}
+                <SmallColumn>
+                  <Label style={{ width: "100%" }}>CVC</Label>
+                  <Input
+                    maxLength={3}
+                    name='cvc'
+                    type='text'
+                    style={{ flex: isMobile ? "1 0 3rem" : "1 0 4rem" }}
+                    value={cardDetails?.cvc}
+                    placeholder='e.g. 123'
+                    onChange={(e: any) => handleCardDetails(e)}
+                  />
+                  {formErrors.cvc.isBlank && (
+                    <ErrorText>Can't be blank</ErrorText>
+                  )}
+                  {formErrors.cvc.isMinLength && (
+                    <ErrorText>Must be at least 3 numbers</ErrorText>
+                  )}
+                </SmallColumn>
               </FormRow>
             </InputWrapper>
           </FormRow>

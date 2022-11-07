@@ -75,7 +75,7 @@ const App = () => {
 
   const handleCardDetails = (e: any) => {
     const { name, value } = e.target
-    console.log(name, value)
+
     if (name === "month") {
       setCardDetails((prevState) => ({
         ...prevState,
@@ -99,51 +99,44 @@ const App = () => {
       }))
     }
   }
-  console.log("errors: ", formErrors)
 
   const onSubmit = () => {
-    console.log("submite")
-    if (!cardDetails.expDate.month) {
-      setFormErrors((prevState) => ({
-        ...prevState,
-        month: { ...prevState.month, isBlank: true },
-      }))
-    } else {
-      setFormErrors((prevState) => ({
-        ...prevState,
-        month: { ...prevState.month, isBlank: false },
-      }))
+    const setErrors = {
+      month: { isBlank: !cardDetails.expDate.month },
+      year: { isBlank: !cardDetails.expDate.year },
+      cvc: {
+        isBlank: !cardDetails.cvc,
+        isMinLength: cardDetails.cvc.length !== 3,
+      },
     }
-    if (!cardDetails.expDate.year) {
-      setFormErrors((prevState) => ({
-        ...prevState,
-        year: { ...prevState.year, isBlank: true },
-      }))
-    } else {
-      setFormErrors((prevState) => ({
-        ...prevState,
-        year: { ...prevState.year, isBlank: false },
-      }))
+
+    const flattenErrors = (obj = setErrors): any => {
+      let result: [] = []
+      Object.keys(obj).forEach((key) => {
+        // @ts-ignore
+        if (typeof obj[key] === "object") {
+          // @ts-ignore
+          flattenErrors(obj[key])
+        }
+        // @ts-ignore
+        result.push(Object.values(obj[key]))
+      })
+      return result.reduce((a, b) => a.concat(b), [])
     }
-    if (!cardDetails.cvc) {
-      setFormErrors((prevState) => ({
-        ...prevState,
-        cvc: { ...prevState.cvc, isBlank: true },
-      }))
-    } else if (cardDetails.cvc.length !== 3) {
-      setFormErrors((prevState) => ({
-        ...prevState,
-        cvc: { ...prevState.cvc, isMinLength: true },
-      }))
+
+    if (flattenErrors().includes(true)) {
+      console.log("setErrors", setErrors)
+      setFormErrors(setErrors)
     } else {
-      setFormErrors((prevState) => ({
-        ...prevState,
-        cvc: { isBlank: true, isMinLength: false },
-      }))
+      console.log("ok")
       shouldShowSubmitMessage(true)
-      setCardDetails(initialCardDetails)
-      setFormErrors(initialErrorsState)
     }
+  }
+
+  const resetForm = () => {
+    shouldShowSubmitMessage(false)
+    setFormErrors(initialErrorsState)
+    setCardDetails(initialCardDetails)
   }
 
   // validate month and year entries
@@ -181,7 +174,7 @@ const App = () => {
           </CardContainer>
           <Form
             showSubmitMessage={showSubmitMessage}
-            shouldShowSubmitMessage={shouldShowSubmitMessage}
+            resetForm={resetForm}
             handleCardDetails={handleCardDetails}
             cardDetails={cardDetails}
             formErrors={formErrors}

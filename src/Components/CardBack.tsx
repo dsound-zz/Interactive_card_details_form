@@ -2,45 +2,45 @@ import styled from "styled-components"
 import cardBackImage from "../assets/images/bg-card-back.png"
 import { colors } from "../util/globalStyles"
 
+type CardBackProps = {
+  cvc: string
+}
+
 const CardContainer = styled.div`
-  grid-area: card-2;
-  aspect-ratio: 3/2;
+  aspect-ratio: 5/3;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: flex-end;
-  padding: 2rem;
-  max-width: 40rem;
-  min-width: 20rem;
+  align-items: center;
+  align-self: flex-end;
   width: 100%;
-  grid-gap: 3rem;
-  max-height: 27rem;
-  transform: translate(3rem, 2rem);
+  max-width: 25rem;
   background-image: url(${cardBackImage});
   background-repeat: no-repeat;
   background-size: 100% 100%;
   @media (max-width: 768px) {
-    // width: 80%;
-    // transform: translate(1.5rem, -31rem);
-  }
+    order: 1;
+    width: 80%;
+    justify-self: center;
+  } ;
 `
 
 const CardCode = styled.div`
   color: ${colors.white};
-  font-size: 1.6rem;
-  border: 2px solid pink;
-  margin-right: 2rem;
-  flex: 0 1 2rem;
+  font-size: 1.2rem;
+  width: 100%;
+  max-width: 100px;
+  flex: 0 1 5.5rem;
   @media (max-width: 768px) {
-    // font-size: 1rem;
-    // transform: translate(4rem, 0.2rem);
+    flex: 0 1 3rem;
+    font-size: 0.8rem;
   }
 `
-const CardBack = () => {
+const CardBack = ({ cvc }: CardBackProps) => {
   console.log("cardback")
   return (
     <CardContainer>
-      <CardCode>007</CardCode>
+      <CardCode>{cvc || "007"}</CardCode>
     </CardContainer>
   )
 }

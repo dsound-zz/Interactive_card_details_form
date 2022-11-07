@@ -37,7 +37,6 @@ const CardCode = styled.div`
   }
 `
 const CardBack = ({ cvc }: CardBackProps) => {
-  console.log("cardback")
   return (
     <CardContainer>
       <CardCode>{cvc || "007"}</CardCode>

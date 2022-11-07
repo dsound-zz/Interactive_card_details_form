@@ -1,96 +1,101 @@
-import styled from "styled-components";
-import cardFrontImage from "../assets/images/bg-card-front.png";
-import { colors } from "../util/globalStyles";
+import styled from "styled-components"
+import cardFrontImage from "../assets/images/bg-card-front.png"
+import { colors } from "../util/globalStyles"
+import { ReactComponent as CardLogo } from "../assets/images/card-logo.svg"
+import { CardDetailTypes } from "../util/types"
 
-type CircleProps = {
-  large?: boolean;
-};
+type CardFrontProps = {
+  cardDetails: CardDetailTypes
+}
 
 const CardContainer = styled.div`
+  aspect-ratio: 5/3;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: minmax(repeat(6, 1fr));
+  grid-template-rows: max-content;
+  grid-template-areas: "logo logo . . . ." "number  number number number number number" " name name . . expDate expDate";
+  grid-gap: 2rem 0;
+  align-self: flex-start;
+  width: 100%;
+  max-width: 25rem;
+  padding: 1rem;
   background-image: url(${cardFrontImage});
   background-repeat: no-repeat;
-  padding: 0.5em;
-  position: absolute;
-  top: 250px;
-  left: 180px;
-  z-index: 2;
-  width: 100%;
-  height: 50%;
+  background-size: 100% 100%;
   @media (max-width: 768px) {
-    display: grid;
-    width: 100%;
-    height: 50%;
-    top: 200px;
-    left: 5px;
-    background-size: 75% 50%;
-  }
-`;
+    order: 2;
+    grid-gap: 1.5rem;
+    z-index: 1;
+    transform: translate(-0.5rem, -4rem);
+    width: 80%;
+  } ;
+`
 
-const CircleContainer = styled.div`
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: "space-between";
-  align-items: center;
-  width: 50%;
-  max-width: 300px;
-  padding: 0.5em;
-  border: 1px solid orange;
+const StyledCardLogo = styled(CardLogo)`
+  grid-area: logo;
+  width: 30%;
+  height: auto;
+  padding-top: 0.3rem;
+  margin-left: 0.5rem;
   @media (max-width: 768px) {
-    height: 30%;
-  }
-`;
-
-const Circle = styled.div<CircleProps>`
-  background: ${(props) => props.large && `${colors.white}`};
-  border-radius: 50%;
-  margin-left: 20px;
-  border: ${colors.white} solid 1px;
-  width: ${(props) => (props.large ? "40px" : "25px")};
-  height: ${(props) => (props.large ? "40px" : "25px")};
-`;
+    transform: scale(1.9);
+  } ;
+`
 
 const CardNumber = styled.div`
-  grid-column: 1/3;
-  grid-row: 2;
-  padding: 20px;
-  margin-top: 50px;
+  grid-area: number;
   color: ${colors.white};
-  letter-spacing: 0.4em;
-  border: purple solid 1px;
-`;
+  letter-spacing: 0.4rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    margin-top: 0.5rem;
+  } ;
+`
 
 const CardName = styled.p`
-  grid-column: 1;
-  grid-row: 3;
-  margin-top: 10px;
-  margin-left: 20px;
+  grid-area: name;
   color: ${colors.white};
-  font-size: 0.8rem;
-`;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  } ;
+`
 
 const CardDate = styled.p`
+  grid-area: expDate;
   color: ${colors.white};
-  font-size: 0.8rem;
-`;
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  } ;
+`
 
-const CardFront = () => {
-  console.log("cardfront");
+const CardFront = ({ cardDetails }: CardFrontProps) => {
+  console.log("cardfront")
+
+  const cardNumDisplay = (cardNum: string) => {
+    return `${cardNum.slice(0, 4)} ${cardNum.slice(4, 8)} ${cardNum.slice(
+      8,
+      12
+    )} ${cardNum.slice(12, 16)}`
+  }
+
   return (
     <CardContainer>
-      <CircleContainer>
-        <Circle large />
-        <Circle />
-      </CircleContainer>
-      <CardNumber>2343 3433 3432 3432</CardNumber>
-      <CardName>Demian Sims</CardName>
-      <CardDate>01/01</CardDate>
+      <StyledCardLogo />
+      <CardNumber>
+        {cardDetails.cardNumber.length
+          ? cardNumDisplay(cardDetails.cardNumber)
+          : "0000 0000 0000 0000"}
+      </CardNumber>
+      <CardName>{cardDetails.name || "Jane Appleseed"}</CardName>
+      <CardDate>
+        {cardDetails.expDate.month || "02"}/{cardDetails.expDate.year || "22"}
+      </CardDate>
     </CardContainer>
-  );
-};
+  )
+}
 
-export default CardFront;
+export default CardFront

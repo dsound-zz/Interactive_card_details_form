@@ -33,13 +33,16 @@ const Form = ({
         <div className='form__field'>
           <label>CARD NUMBER</label>
           <input
+            maxLength={19}
             name='cardNumber'
             type='text'
             value={cardDetails.cardNumber}
             placeholder='e.g. 1234 5678 9801 2345'
             onChange={(e: any) => handleCardDetails(e)}
           />
-          {/* <div>Wrong format, numbers only</div> */}
+          {formErrors.cardNumber.wrongLength && (
+            <div className='form__error-text'>Needs to be at least 16 nums</div>
+          )}
         </div>
         <div className='form__inner-row'>
           <div className='form__field small'>

@@ -8,6 +8,7 @@ import "./App.css"
 import SubmitMessage from "./Components/SubmitMessage"
 
 const initialErrorsState = {
+  cardNumber: { wrongLength: false },
   month: { isBlank: false },
   year: { isBlank: false },
   cvc: { isBlank: false, isMinLength: false },
@@ -54,6 +55,8 @@ const App = () => {
 
   const onSubmit = () => {
     const setErrors = {
+      // @ts-ignore
+      cardNumber: { wrongLength: cardDetails.cardNumber.length !== 19 },
       month: { isBlank: !cardDetails.expDate.month },
       year: { isBlank: !cardDetails.expDate.year },
       cvc: {

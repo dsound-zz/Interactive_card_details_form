@@ -18,6 +18,7 @@ export type CardProps = {
 }
 
 export type ErrorProps = {
+  cardNumber: { wrongLength: boolean | number } | any
   month: { isBlank: boolean } | any
   year: { isBlank: boolean } | any
   cvc: { isBlank: boolean; isMinLength: boolean } | any
